@@ -49,6 +49,7 @@ console.log(computerChoice);
 // console.log(rockCounter);
 // console.log(scissorsCounter);
 
+
 // GET THE HUMAN CHOICE
 
 // Function empty getHumanChoice
@@ -72,3 +73,58 @@ let humanChoice = getHumanChoice();
 
 // log the humanChoice
 console.log(humanChoice);
+
+// INITIALIZE SCORE VARIABLES
+// Declare the start value with 0
+
+// Initialize humanScore
+var humanScore = 0;
+
+// Initialize computerScore
+var computerScore = 0;
+
+
+// SINGLE ROUND FUNCTION
+
+// function comparing the computer and human choices (parameters)
+function playRound(humanChoice, computerChoice) {
+
+let winner;
+
+// In strings scissors > rock > paper
+// In game opposite, but we need compare scissors - paper
+// IF computerChoice == 'scissors' && ...
+
+if (computerChoice == 'scissors' && humanChoice == 'paper') {
+    winner = 'computer';
+}
+else if (computerChoice == 'paper' && humanChoice == 'scissors') {
+    winner = 'human';
+}
+// In strings scissors > rock > paper
+else if (humanChoice < computerChoice) {
+    winner = 'human';
+}
+else if (humanChoice > computerChoice) {
+    winner = 'computer';
+}
+else { winner = 'draw'}
+
+// For winner counter++
+// Log lose or win
+if (winner == 'computer') {
+    computerScore++;
+    console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+}
+else if (winner == 'human') {
+    humanScore++;
+    console.log('Congratulations! You win!');
+}
+else { console.log("It's draw, try again"); }
+}
+
+playRound(humanChoice, computerChoice);
+console.log(humanScore);
+console.log(computerScore);
+
+
