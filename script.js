@@ -1,5 +1,5 @@
 // Test connection
-console.log("Hello, it's test of connection")
+// console.log("Hello, it's test of connection")
 
 // GET THE COMPUTER CHOICE
 // Function getComputerChoice generating paper || rock || scissors
@@ -48,3 +48,27 @@ console.log(computerChoice);
 // console.log(paperCounter);
 // console.log(rockCounter);
 // console.log(scissorsCounter);
+
+// GET THE HUMAN CHOICE
+
+// Function empty getHumanChoice
+
+function getHumanChoice () {
+    // Ask with decription the choice in number, where 0 - paper, 1 - rock...
+    // Get answer
+    let numberChoice = prompt('Choose your shape: \n0 - paper \n1 - rock \n 2 - scissors');
+
+    // Match it to Choice
+    let humanChoice = (numberChoice === '0') ? 'paper' 
+        : (numberChoice == 1) ? 'rock'
+        : (numberChoice == 2) ? 'scissors'
+        : 'wrong input';
+
+        // return the choice
+        return humanChoice;
+}
+
+let humanChoice = getHumanChoice();
+
+// log the humanChoice
+console.log(humanChoice);
