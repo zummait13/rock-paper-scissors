@@ -8,8 +8,8 @@ function getComputerChoice () {
     let randomNumber = getRandomNumber();
 
     // Match it to Choice
-    let computerChoice = (randomNumber == 0) ? 'paper' 
-        : (randomNumber == 1) ? 'rock' 
+    let computerChoice = (randomNumber == 1) ? 'paper' 
+        : (randomNumber == 2) ? 'rock' 
         : 'scissors';
 
         return computerChoice;
@@ -19,14 +19,14 @@ function getComputerChoice () {
 // Math.random() * max
 // Round it
 function getRandomNumber () {
-    return Math.floor(Math.random() * 3);
+    return Math.floor(Math.random() * 3 + 1);
 }
 
 // variable memorizing the computerChoice
-let computerChoice = getComputerChoice();
+// let computerChoice = getComputerChoice();
 
 // Log the answer
-console.log(computerChoice);
+// console.log(computerChoice);
 
 // TEST PROBABILITY
 
@@ -55,24 +55,28 @@ console.log(computerChoice);
 // Function empty getHumanChoice
 
 function getHumanChoice () {
-    // Ask with decription the choice in number, where 0 - paper, 1 - rock...
-    // Get answer
-    let numberChoice = prompt('Choose your shape: \n0 - paper \n1 - rock \n 2 - scissors');
+    let humanChoice;
 
-    // Match it to Choice
-    let humanChoice = (numberChoice === '0') ? 'paper' 
-        : (numberChoice == 1) ? 'rock'
-        : (numberChoice == 2) ? 'scissors'
-        : 'wrong input';
+    while (humanChoice == null) {
+        // Ask with decription the choice in number, where 0 - paper, 1 - rock...
+        // Get answer
+        let numberChoice = prompt('Choose your shape: \n1 - paper \n2 - rock \n3 - scissors');
+        
+        // Match it to Choice, while it's not empty
+        humanChoice = (numberChoice == 1) ? 'paper' 
+            : (numberChoice == 2) ? 'rock'
+            : (numberChoice == 3) ? 'scissors'
+            : console.log('wrong input, try again');
+    }
 
         // return the choice
         return humanChoice;
 }
 
-let humanChoice = getHumanChoice();
+// let humanChoice = getHumanChoice();
 
 // log the humanChoice
-console.log(humanChoice);
+// console.log(humanChoice);
 
 // INITIALIZE SCORE VARIABLES
 // Declare the start value with 0
@@ -88,6 +92,8 @@ var computerScore = 0;
 
 // function comparing the computer and human choices (parameters)
 function playRound(humanChoice, computerChoice) {
+
+console.log(`Computer bet is ${computerChoice}`);
 
 let winner;
 
@@ -121,10 +127,35 @@ else if (winner == 'human') {
     console.log('Congratulations! You win!');
 }
 else { console.log("It's draw, try again"); }
+
+console.log(`Your score: ${humanScore}, computer's score: ${computerScore}`);
 }
 
-playRound(humanChoice, computerChoice);
-console.log(humanScore);
-console.log(computerScore);
+// playRound(humanChoice, computerChoice);
+// console.log(humanScore);
+// console.log(computerScore);
 
+// PLAY THE ENTIRE GAME
+
+// function running some rounds with playRound()
+function playEntireGame () {
+
+// loop 'for' running playRound - i - number of rounds
+    for (let i = 0; i < 5; i++) {
+        console.log(`Round ${i+1}:`)
+        // ask for each round humanChoice and computerChoice;
+        playRound(getHumanChoice(), getComputerChoice());
+    }
+
+// log the champion
+    if (computerScore > humanScore) {
+        console.log('You lose :( Refresh page to try again');
+    }
+    else if (computerScore < humanScore) {
+        console.log('You win! HURRRRRRRRAAAAAY! \nRefresh page to play again')
+    }
+    else { console.log("It's draw. It was hard fight. Try again?")}
+}
+
+playEntireGame();
 
